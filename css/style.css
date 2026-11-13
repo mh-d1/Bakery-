@@ -1,0 +1,418 @@
+
+:root {
+    --cream: #F7F2E9;
+    --beige: #E8D8C3;
+    --caramel: #A47754;
+    --brown: #493326;
+    --dark: #30231D;
+    --white: #FFFFFF;
+    --muted: #88796D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.announcement {
+    background: var(--brown);
+    color: var(--cream);
+    text-align: center;
+    padding: 10px;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.navbar {
+    background: var(--cream);
+    padding: 22px 0;
+    border-bottom: 1px solid rgba(73, 51, 38, 0.1);
+}
+
+.navbar-brand,
+.footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 27px;
+    font-weight: 700;
+    color: var(--brown);
+}
+
+.navbar-brand span,
+.footer-brand span {
+    color: var(--caramel);
+}
+
+.nav-link {
+    color: var(--brown);
+    font-size: 13px;
+    margin: 0 12px;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--caramel);
+}
+
+.cart-link {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.cart-link span {
+    background: var(--brown);
+    color: white;
+    border-radius: 50%;
+    padding: 4px 8px;
+    margin-left: 5px;
+}
+
+.hero {
+    padding: 75px 0;
+}
+
+.hero-content {
+    padding-right: 45px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    color: var(--caramel);
+}
+
+.hero h1,
+.section-heading h2,
+.story-content h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--brown);
+    font-size: clamp(42px, 5vw, 66px);
+    line-height: 1.15;
+    margin: 22px 0;
+}
+
+.hero h1 em,
+.story-content h2 em {
+    color: var(--caramel);
+}
+
+.hero-content p,
+.story-content p {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.9;
+    max-width: 440px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.btn-primary-custom {
+    display: inline-block;
+    background: var(--brown);
+    color: white;
+    padding: 15px 25px;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+.btn-primary-custom:hover {
+    background: var(--caramel);
+    color: white;
+}
+
+.btn-text {
+    color: var(--brown);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.btn-text:hover {
+    color: var(--caramel);
+}
+
+.hero-note {
+    margin-top: 45px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.hero-note span {
+    color: var(--caramel);
+    margin-right: 7px;
+}
+
+.hero-image {
+    position: relative;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 480px;
+    object-fit: cover;
+}
+
+.image-label {
+    position: absolute;
+    bottom: 25px;
+    left: -25px;
+    background: var(--cream);
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.image-label span {
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--caramel);
+}
+
+.image-label strong {
+    font-family: 'Playfair Display', serif;
+    color: var(--brown);
+    font-size: 17px;
+}
+
+.section-padding {
+    padding: 90px 0;
+}
+
+.section-heading {
+    margin-bottom: 40px;
+}
+
+.section-heading h2 {
+    font-size: 38px;
+    margin: 15px 0 10px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.category-card {
+    display: block;
+    overflow: hidden;
+}
+
+.category-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    transition: transform 0.4s;
+}
+
+.category-card:hover img {
+    transform: scale(1.05);
+}
+
+.category-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--brown);
+    margin-top: 16px;
+}
+
+.featured {
+    background: #F0E8DC;
+}
+
+.product-card {
+    background: var(--cream);
+    padding: 12px;
+    height: 100%;
+}
+
+.product-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 16px 5px 8px;
+}
+
+.product-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--brown);
+}
+
+.product-info p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    color: var(--caramel);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.btn-add {
+    display: inline-block;
+    border: 1px solid var(--brown);
+    padding: 9px 13px;
+    color: var(--brown);
+    background: transparent;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.btn-add:hover {
+    background: var(--brown);
+    color: white;
+}
+
+.btn-outline-custom {
+    border: 1px solid var(--brown);
+    padding: 14px 28px;
+    color: var(--brown);
+    font-size: 12px;
+    display: inline-block;
+}
+
+.btn-outline-custom:hover {
+    background: var(--brown);
+    color: white;
+}
+
+.story-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+}
+
+.story-content {
+    padding-left: 40px;
+}
+
+.story-content h2 {
+    font-size: 43px;
+}
+
+.story-content p {
+    margin-bottom: 25px;
+}
+
+.footer {
+    background: var(--brown);
+    color: var(--cream);
+    padding: 65px 0 20px;
+}
+
+.footer-brand {
+    color: var(--cream);
+}
+
+.footer p {
+    color: #C5B4A3;
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+.footer h5 {
+    font-size: 13px;
+    margin-bottom: 18px;
+}
+
+.footer a:not(.footer-brand) {
+    display: block;
+    color: #D8C9BA;
+    font-size: 12px;
+    margin-bottom: 12px;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    margin-top: 45px;
+    padding-top: 20px;
+    color: #C5B4A3;
+    font-size: 11px;
+}
+
+@media (max-width: 991px) {
+    .hero-content {
+        padding-right: 12px;
+        margin-bottom: 45px;
+    }
+
+    .hero-image img {
+        height: 400px;
+    }
+
+    .story-content {
+        padding-left: 12px;
+    }
+
+    .navbar-collapse {
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero {
+        padding: 50px 0;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero-image img {
+        height: 310px;
+    }
+
+    .image-label {
+        left: 10px;
+        bottom: 10px;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .category-card img {
+        height: 155px;
+    }
+
+    .product-card img {
+        height: 160px;
+    }
+
+    .story-image {
+        height: 300px;
+    }
+
+    .story-content h2 {
+        font-size: 35px;
+    }
+}

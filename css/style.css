@@ -659,3 +659,149 @@ a {
         margin-left: auto;
     }
 }
+
+/* ABOUT PAGE */
+
+.values-section {
+    background: #F0E8DC;
+}
+
+.value-card {
+    background: var(--cream);
+    padding: 35px 25px;
+    height: 100%;
+}
+
+.value-card > span {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--caramel);
+}
+
+.value-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    color: var(--brown);
+    margin: 20px 0 12px;
+}
+
+.value-card p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.story-banner {
+    background: var(--beige);
+    padding: 85px 15px;
+}
+
+.story-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 45px);
+    color: var(--brown);
+    margin: 20px 0 30px;
+}
+
+/* CONTACT PAGE */
+
+.contact-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--brown);
+    margin: 20px 0;
+}
+
+.contact-title em {
+    color: var(--caramel);
+}
+
+.contact-description {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.contact-info {
+    margin-top: 35px;
+}
+
+.contact-info div {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 22px;
+}
+
+.contact-info span {
+    color: var(--caramel);
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contact-info strong {
+    font-size: 13px;
+    color: var(--brown);
+    font-weight: 500;
+}
+
+.contact-form {
+    background: #F0E8DC;
+    padding: 35px;
+}
+
+.contact-form h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--brown);
+    font-size: 27px;
+    margin-bottom: 30px;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 12px;
+    color: var(--brown);
+    margin-bottom: 9px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    border: 1px solid var(--beige);
+    background: var(--cream);
+    padding: 13px 15px;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--brown);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--caramel);
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.form-feedback {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 15px;
+}
+
+@media (max-width: 576px) {
+    .contact-title {
+        font-size: 35px;
+    }
+
+    .contact-form {
+        padding: 23px;
+    }
+
+    .story-banner {
+        padding: 65px 15px;
+    }
+}

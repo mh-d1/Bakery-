@@ -1,103 +1,109 @@
 
-const cartContainer = document.getElementById("cart-items");
-
 function getCart() {
-    return JSON.parse(localStorage.getItem("hanaCart")) || [];
+  return JSON.parse(localStorage.getItem("hanaCart")) || [];
 }
 
 function saveCart(cart) {
-    localStorage.setItem("hanaCart", JSON.stringify(cart));
+  localStorage.setItem("hanaCart", JSON.stringify(cart));
+  updateCartCount();
 }
 
 function renderCart() {
-    const cart = getCart();
+  const cartContainer = document.getElementById("cart-items");
+  const subtotalElement = document.getElementById("cart-subtotal");
+  const totalElement = document.getElementById("cart-total");
+  const emptyMessage = document.getElementById("empty-cart");
+  const checkoutButton = document.getElementById("checkout-btn");
 
-    let subtotal = 0;
+  if (!cartContainer) return;
 
-    if (cart.length === 0) {
-        cartContainer.innerHTML = `
-            <div class="empty-cart">
-                <h2>Your bag is empty.</h2>
-                <p>Let's find something delicious for you.</p>
-                <a href="menu.html" class="btn-primary-custom">
-                    Explore Menu
-                </a>
-            </div>
-        `;
-    } else {
-        cartContainer.innerHTML = cart.map(item => {
-            const product = products.find(p => p.id === item.id);
+  const cart = getCart();
 
-            if (!product) return "";
+  if (cart.length === 0) {
+    cartContainer.innerHTML = "";
+    emptyMessage.style.display = "block";
+    subtotalElement.textContent = formatPrice(0);
+    totalElement.textContent = formatPrice(0);
+    checkoutButton.disabled = true;
+    return;
+  }
 
-            const itemTotal = product.price * item.quantity;
-            subtotal += itemTotal;
+  emptyMessage.style.display = "none";
+  checkoutButton.disabled = false;
 
-            return `
-                <div class="cart-item">
-                    <img src="${product.image}" alt="${product.name}">
+  let subtotal = 0;
 
-                    <div class="cart-item-info">
-                        <span>${product.category}</span>
-                        <h3>${product.name}</h3>
-                        <strong>${formatPrice(product.price)}</strong>
+  cartContainer.innerHTML = cart.map(item => {
+    const product = products.find(p => p.id === item.id);
 
-                        <div class="cart-controls">
-                            <button onclick="changeQuantity(${product.id}, -1)">−</button>
-                            <span>${item.quantity}</span>
-                            <button onclick="changeQuantity(${product.id}, 1)">+</button>
-                            <button class="remove-btn"
-                                onclick="removeProduct(${product.id})">
-                                Remove
-                            </button>
-                        </div>
-                    </div>
+    if (!product) return "";
 
-                    <strong>${formatPrice(itemTotal)}</strong>
-                </div>
-            `;
-        }).join("");
-    }
+    const quantity = Math.max(1, Number(item.quantity) || 1);
+    const itemTotal = product.price * quantity;
 
-    document.getElementById("cart-subtotal").textContent = formatPrice(subtotal);
-    document.getElementById("cart-total").textContent = formatPrice(subtotal);
+    subtotal += itemTotal;
 
-    updateCartCount();
+    return `
+      <div class="cart-item">
+        <img src="${product.image}" alt="${product.name}">
+
+        <div class="cart-item-info">
+          <h5>${product.name}</h5>
+          <p>${formatPrice(product.price)}</p>
+
+          <div class="cart-quantity">
+            <button onclick="changeQuantity(${product.id}, -1)">−</button>
+            <span>${quantity}</span>
+            <button onclick="changeQuantity(${product.id}, 1)">+</button>
+          </div>
+        </div>
+
+        <div class="cart-item-actions">
+          <strong>${formatPrice(itemTotal)}</strong>
+          <button
+            class="remove-button"
+            onclick="removeFromCart(${product.id})">
+            Remove
+          </button>
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  subtotalElement.textContent = formatPrice(subtotal);
+  totalElement.textContent = formatPrice(subtotal);
 }
 
-function changeQuantity(productId, amount) {
-    let cart = getCart();
+function changeQuantity(productId, change) {
+  const cart = getCart();
+  const item = cart.find(item => item.id === productId);
 
-    const item = cart.find(p => p.id === productId);
+  if (!item) return;
 
-    if (!item) return;
+  item.quantity += change;
 
-    item.quantity += amount;
+  if (item.quantity <= 0) {
+    removeFromCart(productId);
+    return;
+  }
 
-    if (item.quantity <= 0) {
-        cart = cart.filter(p => p.id !== productId);
-    }
-
-    saveCart(cart);
-    renderCart();
+  saveCart(cart);
+  renderCart();
 }
 
-function removeProduct(productId) {
-    const cart = getCart().filter(item => item.id !== productId);
+function removeFromCart(productId) {
+  const cart = getCart().filter(item => item.id !== productId);
 
-    saveCart(cart);
-    renderCart();
+  saveCart(cart);
+  renderCart();
 }
 
-document.getElementById("checkout-btn").addEventListener("click", () => {
-    const cart = getCart();
+function checkout() {
+  const cart = getCart();
 
-    if (cart.length === 0) {
-        alert("Your shopping bag is empty.");
-        return;
-    }
+  if (cart.length === 0) return;
 
-    alert("This is a demo checkout. No actual order or payment was made.");
-});
+  alert("Thank you for shopping at Hana Bakery!");
+}
 
-renderCart();
+document.addEventListener("DOMContentLoaded", renderCart);

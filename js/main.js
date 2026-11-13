@@ -37,16 +37,18 @@ function renderFeaturedProducts() {
 }
 
 function addToCart(productId) {
+
+function addToCart(productId, quantity = 1) {
     let cart = JSON.parse(localStorage.getItem("hanaCart")) || [];
 
     const existingProduct = cart.find(item => item.id === productId);
 
     if (existingProduct) {
-        existingProduct.quantity++;
+        existingProduct.quantity += quantity;
     } else {
         cart.push({
             id: productId,
-            quantity: 1
+            quantity: quantity
         });
     }
 
@@ -54,6 +56,7 @@ function addToCart(productId) {
 
     updateCartCount();
 }
+
 
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem("hanaCart")) || [];
